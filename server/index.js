@@ -2,7 +2,11 @@
 import { Server } from "socket.io";
 import { createGame, applyAction, viewFor } from "./engine.js";
 
-const io = new Server(3000, { cors:{origin:"*"} });
+const PORT = process.env.PORT || 3000;
+const io = new Server(PORT, {
+  cors: { origin: "*" }
+});
+;
 const rooms = {};
 
 function genRoom() {
