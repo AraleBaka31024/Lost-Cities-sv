@@ -1,0 +1,9 @@
+{
+  "name": "lost-cities-mp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "socket.io": "^4.7.5"
+  }
+}
