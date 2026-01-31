@@ -1,4 +1,3 @@
-
 export const COLORS = ["red","green","blue","yellow","white"];
 
 export function createDeck() {
@@ -87,9 +86,14 @@ export function applyAction(game, pid, action) {
 
 export function viewFor(game, pid) {
   const g = JSON.parse(JSON.stringify(game));
-  g.players = g.players.map((p,i)=>({
-    expeditions: p.expeditions,
-    hand: i===pid ? p.hand : p.hand.map(_=>({hidden:true}))
-  }));
+
+  const you = g.players[pid];
+  const opp = g.players[1 - pid];
+
+  opp.hand = opp.hand.map(() => ({ hidden: true }));
+
+  g.players = [you, opp];
+  g.active = game.active === pid ? 0 : 1;
+
   return g;
 }
